@@ -1,16 +1,15 @@
-function minDepth(root) {
-  if (!root) return 0;
-  const queue = [root];
-  let depth = 1;
-  while (queue.length) {
-    const size = queue.length;
-    for (let i = 0; i < size; i++) {
-      const node = queue.shift();
-      if (!node.left && !node.right) return depth;
-      if (node.left) queue.push(node.left);
-      if (node.right) queue.push(node.right);
+function subsetsWithDup(nums) {
+  const result = [];
+  nums.sort((a, b) => a - b);
+  backtrack(0, []);
+  return result;
+  function backtrack(start, current) {
+    result.push([...current]);
+    for (let i = start; i < nums.length; i++) {
+      if (i > start && nums[i] === nums[i - 1]) continue;
+      current.push(nums[i]);
+      backtrack(i + 1, current);
+      current.pop();
     }
-    depth++;
   }
-  return depth;
 }
