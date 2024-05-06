@@ -1,15 +1,11 @@
-function subsetsWithDup(nums) {
-  const result = [];
-  nums.sort((a, b) => a - b);
-  backtrack(0, []);
-  return result;
-  function backtrack(start, current) {
-    result.push([...current]);
-    for (let i = start; i < nums.length; i++) {
-      if (i > start && nums[i] === nums[i - 1]) continue;
-      current.push(nums[i]);
-      backtrack(i + 1, current);
-      current.pop();
-    }
+function reverseList(head) {
+  let prev = null;
+  let curr = head;
+  while (curr) {
+    const next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
   }
+  return prev;
 }
