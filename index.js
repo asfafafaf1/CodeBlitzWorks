@@ -1,11 +1,2 @@
-function reverseList(head) {
-  let prev = null;
-  let curr = head;
-  while (curr) {
-    const next = curr.next;
-    curr.next = prev;
-    prev = curr;
-    curr = next;
-  }
-  return prev;
-}
+const nthElement = (arr, n = 0) =>
+  (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[0];
