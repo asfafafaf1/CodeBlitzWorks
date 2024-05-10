@@ -1,18 +1,11 @@
-function detectCycle(head) {
-  let slow = head;
-  let fast = head;
-  while (fast && fast.next) {
-    slow = slow.next;
-    fast = fast.next.next;
-    if (slow === fast) {
-      let p1 = head;
-      let p2 = slow;
-      while (p1 !== p2) {
-        p1 = p1.next;
-        p2 = p2.next;
-      }
-      return p1;
-    }
+function binarySearch(arr, target) {
+  let low = 0;
+  let high = arr.length - 1;
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2);
+    if (arr[mid] === target) return mid;
+    if (arr[mid] < target) low = mid + 1;
+    else high = mid - 1;
   }
-  return null;
+  return -1;
 }
